@@ -1,16 +1,13 @@
-/* ========================================
-    Basic Configuration
-========================================= */
-
-* {
-    font-family: 'Cormorant Garamond', serif;
-    color: black;
-    text-decoration: none;
-}
+@charset 'utf-8';
 
 /* ========================================
-    mixin
+    mixin and valiable
 ========================================= */
+
+$blue: #01b2fe;
+$light_blue: rgb(175, 237, 241);
+$gray: rgb(174, 174, 174);
+$dark_gray: rgb(110, 110, 110);
 
 /*-------------------------
 
@@ -18,7 +15,6 @@ tablet: ~960px
 smartphone: 320px ~ 560px
 
 -------------------------*/
-
 
 // resposive design
 @mixin media($max) {
@@ -39,17 +35,36 @@ smartphone: 320px ~ 560px
     position: absolute;
     width: 18px;
     height: 3px;
-    background-color: rgb(110, 110, 110);
+    background-color: $dark_gray;
     transition: 0.2s;
 }
 
+/* ========================================
+    Basic Configuration
+========================================= */
 
+* {
+    font-family: 'Cormorant Garamond', serif;
+    color: black;
+    text-decoration: none;
+}
 
+.section {
+    margin: 0 auto;
+}
+
+.heading {
+    color: $blue;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 2rem 0 .2rem 0;
+    border-bottom: 1px solid $gray;
+}
 
 /* ========================================
     card
 ========================================= */
-
 
 .card_wrapper {
     position: fixed;
@@ -83,7 +98,6 @@ smartphone: 320px ~ 560px
             }
 
             display: block;
-            background-color: black;
             border-radius: 50%;
             transform-origin: 125px 0;
             filter: blur(80px);
@@ -171,7 +185,7 @@ header {
             width: 12rem;
             height: 12rem;
             border-radius: 50%;
-            border: 7px solid rgb(175, 237, 241);
+            border: 7px solid $light_blue;
         }
     }
 
@@ -184,7 +198,7 @@ header {
             li {
 
                 a {
-                    background-color: rgb(174, 174, 174);
+                    background-color: $gray;
                     display: block;
                     padding: 0.5rem;
                     margin: 0.5rem 0;
@@ -193,7 +207,7 @@ header {
                     transition: all 0.2s;
 
                     &:hover {
-                        background-color: rgb(175, 237, 241);
+                        background-color: $light_blue;
                     }
                 }
             }
@@ -218,8 +232,8 @@ header {
         position: relative;
         width: 30px;
         height: 30px;
-
-        border: 3px solid rgb(110, 110, 110);
+        border: 3px solid $dark_gray;
+        border-radius: 4px;
         background-color: rgba(#F6F5EF, 0.5);
         display: flex;
         justify-content: center;
@@ -230,7 +244,7 @@ header {
             @include toggle_psendo();
 
             transform: translateY(-8px);
-            box-shadow: 0 8px 0 rgb(110, 110, 110);
+            box-shadow: 0 8px 0 $dark_gray;
 
         }
 
@@ -244,7 +258,7 @@ header {
 
             &::before {
                 transform: translateY(0px) rotate(45deg);
-                box-shadow: 0 0 0 rgb(110, 110, 110);
+                box-shadow: 0 0 0 $dark_gray;
             }
 
             &::after {
@@ -276,10 +290,11 @@ header {
 
 }
 
-.wrapper {
-    // background-color: #00c456;
-    width: 70%;
+/* ========================================
+    wrapper
+========================================= */
 
+.wrapper {
     margin-left: 30%;
 
     @include media(960px) {
@@ -291,18 +306,11 @@ header {
     ========================================= */
 
     #home_wrapper {
-        // background-color: #01b2fe;
-        width: 80%;
         display: flex;
         justify-content: center;
         flex-direction: column;
         padding: 10rem 0;
-
-        @include media(520px) {
-            width: 95%;
-        }
-
-        margin: 0 auto;
+        width: 80%;
 
         h1 {
             font-size: 4rem;
@@ -312,6 +320,11 @@ header {
             }
 
             font-weight: bold;
+
+            span {
+                color: $blue;
+                font-weight: bold;
+            }
         }
 
         p {
@@ -341,4 +354,68 @@ header {
     /* ========================================
         about_wrapper
     ========================================= */
+
+    #about_wrapper {
+        dl {
+            width: 80%;
+            padding: .5rem 0;
+            margin: 0 auto;
+            
+            dt {
+                font-size: 1.5rem;
+                display: inline-block;
+                margin-right: 2rem;
+            }
+
+            dd {
+                font-size: 1.5rem;
+                display: inline-block;
+            }
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            padding: 2rem 0;
+            text-align: center;
+        }
+    }
+
+    #skills_wrapper {
+        width: 80%;
+        padding: 5rem 0;
+
+        dl {
+            width: 80%;
+            @include media(580px) {
+                width: 90%;
+            }
+
+            @include media(420px) {
+                width: 100%;
+            }
+            margin: 0 auto;
+            padding: 3rem 0;
+
+            dt {
+                width: 80%;
+
+                @include media(580px) {
+                    width: 100%;
+                }
+
+                font-size: 1.5rem;    
+                font-weight: bold;  
+                margin: 1.5rem 0 .5rem 0;    
+                background:linear-gradient(to right, $light_blue, rgba(#fff, 0)) ;    
+            }
+
+            dd {
+                font-size: 1.5rem;
+                a {
+                    color: $blue;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
 }

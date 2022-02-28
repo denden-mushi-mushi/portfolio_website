@@ -1,5 +1,14 @@
 @charset "UTF-8";
 /* ========================================
+    mixin and valiable
+========================================= */
+/*-------------------------
+
+tablet: ~960px
+smartphone: 320px ~ 560px
+
+-------------------------*/
+/* ========================================
     Basic Configuration
 ========================================= */
 * {
@@ -8,15 +17,19 @@
   text-decoration: none;
 }
 
-/* ========================================
-    mixin
-========================================= */
-/*-------------------------
+.section {
+  margin: 0 auto;
+}
 
-tablet: ~960px
-smartphone: 320px ~ 560px
+.heading {
+  color: #01b2fe;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  padding: 2rem 0 .2rem 0;
+  border-bottom: 1px solid #aeaeae;
+}
 
--------------------------*/
 /* ========================================
     card
 ========================================= */
@@ -61,7 +74,6 @@ smartphone: 320px ~ 560px
   width: 250px;
   height: 250px;
   display: block;
-  background-color: black;
   border-radius: 50%;
   -webkit-transform-origin: 125px 0;
           transform-origin: 125px 0;
@@ -229,6 +241,7 @@ header nav ul li a:hover {
   width: 30px;
   height: 30px;
   border: 3px solid #6e6e6e;
+  border-radius: 4px;
   background-color: rgba(246, 245, 239, 0.5);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -305,8 +318,10 @@ header nav ul li a:hover {
   }
 }
 
+/* ========================================
+    wrapper
+========================================= */
 .wrapper {
-  width: 70%;
   margin-left: 30%;
   /* ========================================
         home_wrapper
@@ -323,7 +338,6 @@ header nav ul li a:hover {
 }
 
 .wrapper #home_wrapper {
-  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -335,13 +349,7 @@ header nav ul li a:hover {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 10rem 0;
-  margin: 0 auto;
-}
-
-@media (max-width: 520px) {
-  .wrapper #home_wrapper {
-    width: 95%;
-  }
+  width: 80%;
 }
 
 .wrapper #home_wrapper h1 {
@@ -353,6 +361,11 @@ header nav ul li a:hover {
   .wrapper #home_wrapper h1 {
     font-size: 2.5rem;
   }
+}
+
+.wrapper #home_wrapper h1 span {
+  color: #01b2fe;
+  font-weight: bold;
 }
 
 .wrapper #home_wrapper p {
@@ -376,5 +389,75 @@ header nav ul li a:hover {
 
 .wrapper #home_wrapper #about_me:hover {
   background-color: #afedf1;
+}
+
+.wrapper #about_wrapper dl {
+  width: 80%;
+  padding: .5rem 0;
+  margin: 0 auto;
+}
+
+.wrapper #about_wrapper dl dt {
+  font-size: 1.5rem;
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+.wrapper #about_wrapper dl dd {
+  font-size: 1.5rem;
+  display: inline-block;
+}
+
+.wrapper #about_wrapper h2 {
+  font-size: 2.5rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.wrapper #skills_wrapper {
+  width: 80%;
+  padding: 5rem 0;
+}
+
+.wrapper #skills_wrapper dl {
+  width: 80%;
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+@media (max-width: 580px) {
+  .wrapper #skills_wrapper dl {
+    width: 90%;
+  }
+}
+
+@media (max-width: 420px) {
+  .wrapper #skills_wrapper dl {
+    width: 100%;
+  }
+}
+
+.wrapper #skills_wrapper dl dt {
+  width: 80%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1.5rem 0 .5rem 0;
+  background: -webkit-gradient(linear, left top, right top, from(#afedf1), to(rgba(255, 255, 255, 0)));
+  background: linear-gradient(to right, #afedf1, rgba(255, 255, 255, 0));
+}
+
+@media (max-width: 580px) {
+  .wrapper #skills_wrapper dl dt {
+    width: 100%;
+  }
+}
+
+.wrapper #skills_wrapper dl dd {
+  font-size: 1.5rem;
+}
+
+.wrapper #skills_wrapper dl dd a {
+  color: #01b2fe;
+  font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */

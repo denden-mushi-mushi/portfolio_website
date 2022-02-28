@@ -1,5 +1,20 @@
 <?php
 
+/* ========================================
+    about_wrapper
+========================================= */
+
+// my age 
+$now = date('Ymd');
+$birthday = '20000309';
+
+// my information
+$myInformation = array(
+    'Age' => floor(($now - $birthday) / 10000),
+    'Post' => 'Front end programmer',
+    'Address' => 'Nagano, Japan'
+);
+
 ?>
 
 <!DOCTYPE html>
@@ -65,8 +80,8 @@
 
     <div class="wrapper">
         <!-- home section starts -->
-        <div id="home_wrapper">
-            <h1>I'm Kazuki</h1>
+        <div class="section" id="home_wrapper">
+            <h1>I'm <span>Kazuki</span></h1>
             <p>Thank you for visiting my website!
                 I'm a Japanese Programmer and live in Nagano in
                 Japan.
@@ -79,25 +94,43 @@
         <!-- home section ends -->
 
         <!-- about section start -->
-            <div id="about_wrapper">
-                <h1 class="heading">About me</h1>
+        <div class="section" id="about_wrapper">
+            <h1 class="heading">About Me</h1>
+            <?php foreach ($myInformation as $information => $value) : ?>
                 <dl>
-                    <dt>Age: </dt>
-                    <dd>今の年齢をphpで</dd>
-
-                    <dt>Post: </dt>
-                    <dd>Front end programmer</dd>
-
-                    <dt>Address</dt>
-                    <dd>Nagano, Japan</dd>
-
+                    <dt><?php echo $information; ?>:</dt>
+                    <dd><?php echo $value; ?></dd>
                 </dl>
-            </div>
+            <?php endforeach; ?>
+
+            <h2>I do rock climbing.</h2>
+            <h2>I climb mountains in winter.</h2>
+        </div>
         <!-- about section ends -->
+
+        <!-- skills section starts -->
+        <div class="section" id="skills_wrapper">
+            <h1 class="heading">My Skills</h1>
+            <dl>
+                <dt>Languages</dt>
+                <dd>HTML & SCSS / JavaScript / PHP</dd>
+
+                <dt>Library & Framework</dt>
+                <dd>Bootstrap / jQuery / swiper.js / Three.js</dd>
+                <dd>Laravel</dd>
+
+                <dt>Others</dt>
+                <dd>WorePress</dd>
+                <dd>github(<a href="https://github.com/kazuki-is-a-pen">My acount is here.</a>)</dd>
+            </dl>
+        </div>
+        <!-- skills section ends -->
+
+        <!-- portfolio section starts -->
     </div>
 
 
-    <script src="js/nav.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
