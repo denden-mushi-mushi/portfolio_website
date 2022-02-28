@@ -8,38 +8,337 @@
     text-decoration: none;
 }
 
-// breakpoint
+/* ========================================
+    mixin
+========================================= */
 
-@mixin media() {
-    
+/*-------------------------
+
+tablet: ~960px
+smartphone: 320px ~ 560px
+
+-------------------------*/
+
+
+// resposive design
+@mixin media($max) {
+    @media (max-width: $max) {
+        @content;
+    }
 }
 
+@mixin media2($min, $max) {
+    @media only screen and (min-width: $min) and (max-width: $max) {
+        @content;
+    }
+}
+
+// navigation button
+@mixin toggle_psendo {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 3px;
+    background-color: rgb(110, 110, 110);
+    transition: 0.2s;
+}
+
+
+
+
 /* ========================================
-    Basic Configuration
+    card
+========================================= */
+
+
+.card_wrapper {
+    position: fixed;
+    left: 60%;
+    z-index: -10;
+
+    @include media(960px) {
+        left: 50%;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    .card {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            position: absolute;
+            top: 0;
+            width: 250px;
+            height: 250px;
+
+            @include media(400px) {
+                width: 190px;
+                height: 190px;
+            }
+
+            display: block;
+            background-color: black;
+            border-radius: 50%;
+            transform-origin: 125px 0;
+            filter: blur(80px);
+            opacity: 0.75;
+
+            // 円の配置
+            @for $i from 0 through 3 {
+                &:nth-of-type(#{$i}) {
+                    transform: rotate(90deg * $i);
+                }
+            }
+
+            // 円の色決め
+            $colors_array: #01b2fe,
+            #ff008c,
+            #ffcd00,
+            #00c456;
+
+            @each $color in $colors_array {
+                $index: index($colors_array, $color);
+
+                &:nth-of-type(#{$index}) {
+                    background-color: $color;
+                }
+            }
+        }
+    }
+}
+
+
+/* ========================================
+    header
 ========================================= */
 
 header {
-    background-color: red;
+    background-color: rgba(#F6F5EF, 0.5);
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 30%;
 
+
+
+    @include media2(800px, 960px) {
+        width: 40%;
+    }
+
+    @include media2(600px, 800px) {
+        width: 50%;
+    }
+
+    @include media2(520px, 600px) {
+        width: 65%;
+    }
+
+    @include media(520px) {
+        width: 100%;
+    }
+
     text-align: center;
-    padding-top: 80px;
+    display: flex;
+
+    @include media(960px) {
+        display: none;
+    }
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 20;
 
     #user {
 
         h1 {
-            margin-top: 15px;
-
+            font-size: 2rem;
+            font-weight: bold;
         }
+
+        p {
+            font-size: 1.5rem;
+        }
+
         img {
-            width: 200px;
-            height: 200px;
+            width: 12rem;
+            height: 12rem;
             border-radius: 50%;
-            border: 2px solid rgb(175, 237, 241);
+            border: 7px solid rgb(175, 237, 241);
         }
     }
+
+    nav {
+        width: 100%;
+
+        ul {
+            padding: .2em 2em;
+
+            li {
+
+                a {
+                    background-color: rgb(174, 174, 174);
+                    display: block;
+                    padding: 0.5rem;
+                    margin: 0.5rem 0;
+                    font-size: 1.3rem;
+                    border-radius: 5em;
+                    transition: all 0.2s;
+
+                    &:hover {
+                        background-color: rgb(175, 237, 241);
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+#toggle_cover {
+    cursor: pointer;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 30;
+    display: none;
+
+    @include media(960px) {
+        display: block;
+    }
+
+    #toggle {
+        position: relative;
+        width: 30px;
+        height: 30px;
+
+        border: 3px solid rgb(110, 110, 110);
+        background-color: rgba(#F6F5EF, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.2s;
+
+        &::before {
+            @include toggle_psendo();
+
+            transform: translateY(-8px);
+            box-shadow: 0 8px 0 rgb(110, 110, 110);
+
+        }
+
+        &::after {
+            @include toggle_psendo();
+
+            transform: translateY(8px);
+        }
+
+        &.active {
+
+            &::before {
+                transform: translateY(0px) rotate(45deg);
+                box-shadow: 0 0 0 rgb(110, 110, 110);
+            }
+
+            &::after {
+                transform: translateY(0px) rotate(-45deg);
+            }
+        }
+    }
+}
+
+/*丸の拡大*/
+#circle {
+    position: fixed;
+    top: -60px;
+    right: -60px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; //  丸の形
+    background-color: rgba(#F6F5EF, 0.7);
+    transform: scale(0); // scaleをはじめは0に
+    transition: all 0.5s; // 0.5秒かけてアニメーション
+    z-index: 10;
+
+    @include media(520px) {
+        &.circle_active {
+            transform: scale(50);
+            /*クラスが付与されたらscaleを拡大*/
+        }
+    }
+
+}
+
+.wrapper {
+    // background-color: #00c456;
+    width: 70%;
+
+    margin-left: 30%;
+
+    @include media(960px) {
+        margin: 0 auto;
+    }
+
+    /* ========================================
+        home_wrapper
+    ========================================= */
+
+    #home_wrapper {
+        // background-color: #01b2fe;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10rem 0;
+
+        @include media(520px) {
+            width: 95%;
+        }
+
+        margin: 0 auto;
+
+        h1 {
+            font-size: 4rem;
+
+            @include media(520px) {
+                font-size: 2.5rem;
+            }
+
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
+
+            a {
+                font-weight: bold;
+            }
+        }
+
+        #about_me {
+            font-size: 1.5rem;
+            font-weight: normal;
+            padding: .5rem 1.5rem;
+            background-color: rgb(174, 174, 174);
+            border-radius: 5rem;
+            transition: all 0.2s;
+
+            &:hover {
+                background-color: rgb(175, 237, 241);
+            }
+        }
+
+    }
+
+    /* ========================================
+        about_wrapper
+    ========================================= */
 }
