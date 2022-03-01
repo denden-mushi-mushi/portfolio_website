@@ -8,9 +8,11 @@ $blue: #01b2fe;
 $light_blue: rgb(175, 237, 241);
 $gray: rgb(174, 174, 174);
 $dark_gray: rgb(110, 110, 110);
+$glass: rgba(255, 255, 255, 0.5);
 
 /*-------------------------
 
+pc & sideways tablet: 1024px~
 tablet: ~960px
 smartphone: 320px ~ 560px
 
@@ -35,7 +37,7 @@ smartphone: 320px ~ 560px
     position: absolute;
     width: 18px;
     height: 3px;
-    background-color: $dark_gray;
+    background-color: $light_blue;
     transition: 0.2s;
 }
 
@@ -51,6 +53,7 @@ smartphone: 320px ~ 560px
 
 .section {
     margin: 0 auto;
+    width: 80%; // this value is fixed.
 }
 
 .heading {
@@ -232,9 +235,8 @@ header {
         position: relative;
         width: 30px;
         height: 30px;
-        border: 3px solid $dark_gray;
         border-radius: 4px;
-        background-color: rgba(#F6F5EF, 0.5);
+        background-color: $gray;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -244,7 +246,7 @@ header {
             @include toggle_psendo();
 
             transform: translateY(-8px);
-            box-shadow: 0 8px 0 $dark_gray;
+            box-shadow: 0 8px 0 $light_blue;
 
         }
 
@@ -258,7 +260,7 @@ header {
 
             &::before {
                 transform: translateY(0px) rotate(45deg);
-                box-shadow: 0 0 0 $dark_gray;
+                box-shadow: 0 0 0 $light_blue;
             }
 
             &::after {
@@ -310,7 +312,6 @@ header {
         justify-content: center;
         flex-direction: column;
         padding: 10rem 0;
-        width: 80%;
 
         h1 {
             font-size: 4rem;
@@ -360,7 +361,7 @@ header {
             width: 80%;
             padding: .5rem 0;
             margin: 0 auto;
-            
+
             dt {
                 font-size: 1.5rem;
                 display: inline-block;
@@ -386,6 +387,7 @@ header {
 
         dl {
             width: 80%;
+
             @include media(580px) {
                 width: 90%;
             }
@@ -393,6 +395,7 @@ header {
             @include media(420px) {
                 width: 100%;
             }
+
             margin: 0 auto;
             padding: 3rem 0;
 
@@ -403,17 +406,110 @@ header {
                     width: 100%;
                 }
 
-                font-size: 1.5rem;    
-                font-weight: bold;  
-                margin: 1.5rem 0 .5rem 0;    
-                background:linear-gradient(to right, $light_blue, rgba(#fff, 0)) ;    
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin: 1.5rem 0 .5rem 0;
+                background:linear-gradient(to right, $light_blue, rgba(#fff, 0));
             }
 
             dd {
                 font-size: 1.5rem;
+
                 a {
                     color: $blue;
                     font-weight: bold;
+                }
+            }
+        }
+    }
+
+    #portfolio_wrapper {
+        // 700px ~ 1024px
+        // 530px ~ 700px
+        // ? ~ 530px
+
+        #portfolios {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+
+            @include media(700px) {
+                flex-direction: column;
+            }
+
+            padding: 3rem 0;
+
+            .portfolio {
+                width: 40%;
+
+                @include media(700px) {
+                    width: 70%;
+                }
+
+                @include media(530px) {
+                    width: 90%;
+                }
+
+                margin: 0 1rem 3rem 1rem;
+                position: relative;
+
+                a {
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: 180px;
+
+                        @include media2(400px,700px) {
+                            height: 250px;
+                        }
+                    }
+
+                    span {
+                        width: 100%;
+
+                        @include media2(530px, 1024px) {
+                            width: 75%;
+                        }
+
+                        @include media(530px) {
+                            width: 90%;
+                        }
+                        height: 180px;
+                        font-size: 2rem;
+
+                        @include media(399px) {
+                            height: 150px;
+                            font-size: 1.5rem;
+                        }
+
+                        @include media2(701px, 1024px) {
+                            height: 150px;
+                            font-size: 1.5rem;
+                        }
+
+                        opacity: 0;
+                        display: flex;
+                        align-items: center;
+                        text-align: left;
+                        font-weight: bold;
+                        color: #fff;
+                        background-color: rgba(rgb(37, 37, 37), 0.8);
+                        transition: all .5s;
+
+                        // position config
+                        position: absolute;
+                        top: 0;
+
+                        @include media(1024px) {
+                            color: $dark_gray;
+                            opacity: 1;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            background-color: $glass;
+                        }
+                    }
                 }
             }
         }

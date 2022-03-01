@@ -4,6 +4,7 @@
 ========================================= */
 /*-------------------------
 
+pc & sideways tablet: 1024px~
 tablet: ~960px
 smartphone: 320px ~ 560px
 
@@ -19,6 +20,7 @@ smartphone: 320px ~ 560px
 
 .section {
   margin: 0 auto;
+  width: 80%;
 }
 
 .heading {
@@ -240,9 +242,8 @@ header nav ul li a:hover {
   position: relative;
   width: 30px;
   height: 30px;
-  border: 3px solid #6e6e6e;
   border-radius: 4px;
-  background-color: rgba(246, 245, 239, 0.5);
+  background-color: #aeaeae;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -261,13 +262,13 @@ header nav ul li a:hover {
   position: absolute;
   width: 18px;
   height: 3px;
-  background-color: #6e6e6e;
+  background-color: #afedf1;
   -webkit-transition: 0.2s;
   transition: 0.2s;
   -webkit-transform: translateY(-8px);
           transform: translateY(-8px);
-  -webkit-box-shadow: 0 8px 0 #6e6e6e;
-          box-shadow: 0 8px 0 #6e6e6e;
+  -webkit-box-shadow: 0 8px 0 #afedf1;
+          box-shadow: 0 8px 0 #afedf1;
 }
 
 #toggle_cover #toggle::after {
@@ -275,7 +276,7 @@ header nav ul li a:hover {
   position: absolute;
   width: 18px;
   height: 3px;
-  background-color: #6e6e6e;
+  background-color: #afedf1;
   -webkit-transition: 0.2s;
   transition: 0.2s;
   -webkit-transform: translateY(8px);
@@ -285,8 +286,8 @@ header nav ul li a:hover {
 #toggle_cover #toggle.active::before {
   -webkit-transform: translateY(0px) rotate(45deg);
           transform: translateY(0px) rotate(45deg);
-  -webkit-box-shadow: 0 0 0 #6e6e6e;
-          box-shadow: 0 0 0 #6e6e6e;
+  -webkit-box-shadow: 0 0 0 #afedf1;
+          box-shadow: 0 0 0 #afedf1;
 }
 
 #toggle_cover #toggle.active::after {
@@ -349,7 +350,6 @@ header nav ul li a:hover {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 10rem 0;
-  width: 80%;
 }
 
 .wrapper #home_wrapper h1 {
@@ -459,5 +459,118 @@ header nav ul li a:hover {
 .wrapper #skills_wrapper dl dd a {
   color: #01b2fe;
   font-weight: bold;
+}
+
+.wrapper #portfolio_wrapper #portfolios {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 3rem 0;
+}
+
+@media (max-width: 700px) {
+  .wrapper #portfolio_wrapper #portfolios {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.wrapper #portfolio_wrapper #portfolios .portfolio {
+  width: 40%;
+  margin: 0 1rem 3rem 1rem;
+  position: relative;
+}
+
+@media (max-width: 700px) {
+  .wrapper #portfolio_wrapper #portfolios .portfolio {
+    width: 70%;
+  }
+}
+
+@media (max-width: 530px) {
+  .wrapper #portfolio_wrapper #portfolios .portfolio {
+    width: 90%;
+  }
+}
+
+.wrapper #portfolio_wrapper #portfolios .portfolio a img {
+  display: block;
+  width: 100%;
+  height: 180px;
+}
+
+@media only screen and (min-width: 400px) and (max-width: 700px) {
+  .wrapper #portfolio_wrapper #portfolios .portfolio a img {
+    height: 250px;
+  }
+}
+
+.wrapper #portfolio_wrapper #portfolios .portfolio a span {
+  width: 100%;
+  height: 180px;
+  font-size: 2rem;
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(37, 37, 37, 0.8);
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  position: absolute;
+  top: 0;
+}
+
+@media only screen and (min-width: 530px) and (max-width: 1024px) {
+  .wrapper #portfolio_wrapper #portfolios .portfolio a span {
+    width: 75%;
+  }
+}
+
+@media (max-width: 530px) {
+  .wrapper #portfolio_wrapper #portfolios .portfolio a span {
+    width: 90%;
+  }
+}
+
+@media (max-width: 399px) {
+  .wrapper #portfolio_wrapper #portfolios .portfolio a span {
+    height: 150px;
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 701px) and (max-width: 1024px) {
+  .wrapper #portfolio_wrapper #portfolios .portfolio a span {
+    height: 150px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper #portfolio_wrapper #portfolios .portfolio a span {
+    color: #6e6e6e;
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.5);
+  }
 }
 /*# sourceMappingURL=style.css.map */

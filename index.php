@@ -127,6 +127,52 @@ $myInformation = array(
         <!-- skills section ends -->
 
         <!-- portfolio section starts -->
+        <div class="section" id="portfolio_wrapper">
+            <h1 class="heading">Portfolio</h1>
+            <div id="portfolios">
+                <div class="portfolio">
+                    <a href="#">
+                        <img src="images/portfolio/portfolio1.png" alt="My portfolio image">
+                        <span>First<br> Portfolio Website</span>
+                    </a>
+
+                </div>
+
+                <div class="portfolio">
+                    <a href="https://kazukiportfolio.com">
+                        <img src="images/portfolio/portfolio2.png" alt="My portfolio image">
+                        <span>New<br> Portfolio Website</span>
+                    </a>
+                </div>
+
+                <div class="portfolio">
+                    <a href="#">
+                        <img src="images/portfolio/portfolio3.png" alt="My portfolio image">
+                        <span>"WordPress"<br>My Theme</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- portfolio section ends -->
+
+        <!-- contact section starts -->
+        <div class="section" id="contact_wrapper">
+            <h1 class="heading">Contact Me</h1>
+            <form action="" method="post" novalidate="">
+                <p class="form_content">Name</p>
+                <input type="text" name="name" id="name" value="" maxlength="200">
+
+                <p class="form_content">Email</p>
+                <input type="email" name="email" id="email" value="" maxlength="200">
+
+                <p class="form_content">Message</p>
+                <textarea name="message" id="message" maxlength="1000"></textarea>
+
+                <input type="submit" value="Comfirmation" id="button" style="font-size: 25px;">
+
+            </form>
+        </div>
+        <!-- contact section ends -->
     </div>
 
 
