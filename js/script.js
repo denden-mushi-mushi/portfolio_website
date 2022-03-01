@@ -9,6 +9,7 @@ getToggle.onclick = function () {
 }
 
 // hover system in skill content
+
 const getPortfolio = document.getElementsByClassName('portfolio'); // get .portfolio
 const mediaQuery = window.matchMedia('(min-width: 1024px)');
 
@@ -26,3 +27,13 @@ if (mediaQuery.matches) {
 
 }
 
+// check event when form is submitted
+
+function check(){
+	if(window.confirm('送信してよろしいですか？')){ // 確認ダイアログを表示
+		return true; // 「OK」時は送信を実行
+	}
+	else{ // 「キャンセル」時の処理
+		return false; // 送信を中止
+	}
+}

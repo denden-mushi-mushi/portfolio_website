@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 /* ========================================
     about_wrapper
@@ -14,6 +15,56 @@ $myInformation = array(
     'Post' => 'Front end programmer',
     'Address' => 'Nagano, Japan'
 );
+
+/* ========================================
+    contact_wrapper
+========================================= */
+
+$error = array(
+    'name' => '',
+    'email' => '',
+    'message' => ''
+);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $post = filter_input_array(INPUT_POST, $_POST);
+
+    //フォームの送信時にエラーをチェックする
+    if ($post['name'] === '') {
+        $error['name'] = 'blank';
+    }
+
+    if ($post['email'] === '') {
+        $error['email'] = 'blank';
+    } else if (!filter_var($post['email'], FILTER_VALIDATE_EMAIL)) {
+        $error['email'] = 'email';
+    }
+
+    if ($post['message'] === '') {
+        $error['message'] = 'blank';
+    }
+
+    if ($error['name'] === '' && $error['email'] === '' && $error['message'] === '') {
+
+        //エラーがないので送信
+        $_SESSION['form'] = $post;
+        $to = 'kazukiwammu@gmail.com';
+        $from = $post['email'];
+        $subject = 'お問い合わせが届きました';
+        $body = <<<EOT
+        名前： {$post['name']}
+        メールアドレス： {$post['email']}
+        内容：
+        {$post['message']}
+        EOT;
+        mb_send_mail($to, $subject, $body, "From: {$from}");
+
+        header('Location: complite.php');
+        exit();
+    }
+} 
+
+session_destroy();
 
 ?>
 
@@ -158,18 +209,34 @@ $myInformation = array(
         <!-- contact section starts -->
         <div class="section" id="contact_wrapper">
             <h1 class="heading">Contact Me</h1>
-            <form action="" method="post" novalidate="">
-                <p class="form_content">Name</p>
-                <input type="text" name="name" id="name" value="" maxlength="200">
+            <form action="index.php#contact_wrapper" method="post" onsubmit="return check()" novalidate>
 
-                <p class="form_content">Email</p>
-                <input type="email" name="email" id="email" value="" maxlength="200">
+                <input type="text" name="name" placeholder="Name" class="box" value="<?php if (isset($post['name'])) {
+                                                                                            echo htmlspecialchars($post['name']);
+                                                                                        } ?>">
+                <?php if ($error['name'] === 'blank') : ?>
+                    <p class="error_message">*Please enter your name.</p>
+                <?php endif ?>
 
-                <p class="form_content">Message</p>
-                <textarea name="message" id="message" maxlength="1000"></textarea>
+                <input type="email" name="email" placeholder="Email" class="box" value="<?php if (isset($post['email'])) {
+                                                                                            echo htmlspecialchars($post['email']);
+                                                                                        } ?>">
+                <?php if ($error['email'] === 'blank') : ?>
+                    <p class="error_message">*Please enter your email address</p>
+                <?php endif ?>
+                <?php if ($error['email'] === 'email') : ?>
+                    <p class="error_message">*The email you entered is not correct. Please retry.</p>
+                <?php endif ?>
 
-                <input type="submit" value="Comfirmation" id="button" style="font-size: 25px;">
+                <!-- Shift + Alt + F is prohibited in textarea -->
+                <textarea name="message" placeholder="message" class="box message" cols="30" rows="10"><?php if (isset($post['message'])) {
+                                                                                                            echo htmlspecialchars($post['message']);
+                                                                                                        } ?></textarea>
+                <?php if ($error['message'] === 'blank') : ?>
+                    <p class="error_message">*Please enter your message</p>
+                <?php endif ?>
 
+                <button type="submit">Send</button>
             </form>
         </div>
         <!-- contact section ends -->

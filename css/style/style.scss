@@ -303,6 +303,20 @@ header {
         margin: 0 auto;
     }
 
+    .sc_mg {
+        text-align: center;
+
+        &.sc_mg1 {
+            margin-top: 2rem;
+            font-size: 4rem;
+            color: $blue;
+        }
+
+        &.sc_mg2 {
+            font-size: 1.5rem;
+        }
+    }
+
     /* ========================================
         home_wrapper
     ========================================= */
@@ -460,7 +474,7 @@ header {
                         width: 100%;
                         height: 180px;
 
-                        @include media2(400px,700px) {
+                        @include media2(400px, 700px) {
                             height: 250px;
                         }
                     }
@@ -475,6 +489,7 @@ header {
                         @include media(530px) {
                             width: 90%;
                         }
+
                         height: 180px;
                         font-size: 2rem;
 
@@ -510,6 +525,68 @@ header {
                             background-color: $glass;
                         }
                     }
+                }
+            }
+        }
+    }
+
+    #contact_wrapper {
+        form {
+            width: 100%;
+            padding: 1rem 0 3rem 0;
+            margin: 1rem 0 3rem 0;
+            border-radius: 1rem;
+            background-color: $glass;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            @mixin form_content() {                
+                border: none;
+                outline: none;
+                background-color: $gray;
+                color: #fff;
+                margin-top: 2rem;
+            }
+
+            .error_message {
+                color: red;
+                width: 85%;
+                text-align: left;
+                font-size: 1.3rem;
+            }
+
+            .box {
+                font-family: sans-serif;                
+                width: 85%;
+                display: block;
+                margin: 0 auto;
+                padding: .6rem;                
+                border-radius: .5rem;   
+                @include form_content();  
+                
+                &::placeholder {
+                    color: #fff;
+                }
+
+                &.message {
+                    resize: none;
+                }
+            }
+
+            button {
+                @include form_content();
+                padding: .2rem 3rem;
+                font-size: 1.5rem;
+                border-radius: 5rem;
+                transition: all 0.2s;
+                font-weight: bold;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $dark_gray;
+                    background-color: $blue;
                 }
             }
         }

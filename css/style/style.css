@@ -338,6 +338,20 @@ header nav ul li a:hover {
   }
 }
 
+.wrapper .sc_mg {
+  text-align: center;
+}
+
+.wrapper .sc_mg.sc_mg1 {
+  margin-top: 2rem;
+  font-size: 4rem;
+  color: #01b2fe;
+}
+
+.wrapper .sc_mg.sc_mg2 {
+  font-size: 1.5rem;
+}
+
 .wrapper #home_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -572,5 +586,87 @@ header nav ul li a:hover {
             transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.5);
   }
+}
+
+.wrapper #contact_wrapper form {
+  width: 100%;
+  padding: 1rem 0 3rem 0;
+  margin: 1rem 0 3rem 0;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.wrapper #contact_wrapper form .error_message {
+  color: red;
+  width: 85%;
+  text-align: left;
+  font-size: 1.3rem;
+}
+
+.wrapper #contact_wrapper form .box {
+  font-family: sans-serif;
+  width: 85%;
+  display: block;
+  margin: 0 auto;
+  padding: .6rem;
+  border-radius: .5rem;
+  border: none;
+  outline: none;
+  background-color: #aeaeae;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+.wrapper #contact_wrapper form .box::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.wrapper #contact_wrapper form .box:-ms-input-placeholder {
+  color: #fff;
+}
+
+.wrapper #contact_wrapper form .box::-ms-input-placeholder {
+  color: #fff;
+}
+
+.wrapper #contact_wrapper form .box::placeholder {
+  color: #fff;
+}
+
+.wrapper #contact_wrapper form .box.message {
+  resize: none;
+}
+
+.wrapper #contact_wrapper form button {
+  border: none;
+  outline: none;
+  background-color: #aeaeae;
+  color: #fff;
+  margin-top: 2rem;
+  padding: .2rem 3rem;
+  font-size: 1.5rem;
+  border-radius: 5rem;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  font-weight: bold;
+}
+
+.wrapper #contact_wrapper form button:hover {
+  cursor: pointer;
+  color: #6e6e6e;
+  background-color: #01b2fe;
 }
 /*# sourceMappingURL=style.css.map */
