@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         //エラーがないので送信
         $_SESSION['form'] = $post;
-        $to = 'kazukiwammu@gmail.com';
+        // $to = 'kazukiwammu@gmail.com';
         $from = $post['email'];
         $subject = 'お問い合わせが届きました';
         $body = <<<EOT
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: complite.php');
         exit();
     }
-} 
+}
 
 session_destroy();
 
@@ -80,6 +80,8 @@ session_destroy();
     <!-- css -->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style/style.css">
+    <!-- css for swiper.js -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -155,7 +157,48 @@ session_destroy();
             <?php endforeach; ?>
 
             <h2>I do rock climbing.</h2>
+            <div class="swiper mySwiper rock_climbing">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="images/rock_climbing/rock_climbing1.jpg" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/rock_climbing/rock_climbing2.jpg" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/rock_climbing/rock_climbing3.jpg" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/rock_climbing/rock_climbing4.jpg" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/rock_climbing/rock_climbing5.jpg" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/rock_climbing/rock_climbing6.jpeg" />
+                    </div>
+                    
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
             <h2>I climb mountains in winter.</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide height">
+                        <img src="images/winter/winter_mountain1.jpg" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/winter/winter_mountain2.jpg" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/winter/winter_mountain3.jpg" />
+                    </div>
+                    <div class="swiper-slide height">
+                        <img src="images/winter/winter_mountain4.jpg" />
+                    </div>                                    
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
         <!-- about section ends -->
 
@@ -243,6 +286,7 @@ session_destroy();
     </div>
 
 
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 

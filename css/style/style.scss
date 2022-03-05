@@ -373,25 +373,86 @@ header {
     #about_wrapper {
         dl {
             width: 80%;
+
+            @include media(500px) {
+                width: 100%;
+            }
+
             padding: .5rem 0;
             margin: 0 auto;
 
             dt {
                 font-size: 1.5rem;
+
+                @include media(360px) {
+                    font-size: 1.3rem;
+                }
+
                 display: inline-block;
                 margin-right: 2rem;
+
+                @include media(500px) {
+                    margin-right: .5rem;
+                }
+
             }
 
             dd {
                 font-size: 1.5rem;
+
+                @include media(360px) {
+                    font-size: 1.3rem;
+                }
+
                 display: inline-block;
             }
         }
 
         h2 {
             font-size: 2.5rem;
-            padding: 2rem 0;
+
+            @include media(360px) {
+                font-size: 2rem;
+            }
+
+            padding: 6rem 0 2rem 0;
+
+            @include media(700px) {
+                padding-top: 4rem;
+            }
+
             text-align: center;
+        }
+
+        .swiper {
+            width: 100%;
+            padding-bottom: 40px;
+
+            &.rock_climbing {
+                border-bottom: 1px solid $gray;
+            }
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 350px;
+
+            @include media(600px) {
+                width: 200px;
+                height: 250px;
+            }
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 350px;
+
+            @include media(600px) {
+                height: 250px;
+            }
         }
     }
 
@@ -542,7 +603,7 @@ header {
             align-items: center;
             flex-direction: column;
 
-            @mixin form_content() {                
+            @mixin form_content() {
                 border: none;
                 outline: none;
                 background-color: $gray;
@@ -558,14 +619,14 @@ header {
             }
 
             .box {
-                font-family: sans-serif;                
+                font-family: sans-serif;
                 width: 85%;
                 display: block;
                 margin: 0 auto;
-                padding: .6rem;                
-                border-radius: .5rem;   
-                @include form_content();  
-                
+                padding: .6rem;
+                border-radius: .5rem;
+                @include form_content();
+
                 &::placeholder {
                     color: #fff;
                 }
