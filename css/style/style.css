@@ -131,7 +131,7 @@ smartphone: 320px ~ 560px
     header
 ========================================= */
 header {
-  background-color: rgba(246, 245, 239, 0.5);
+  background-color: rgba(246, 245, 239, 0.8);
   position: fixed;
   top: 0;
   left: 0;
@@ -178,9 +178,48 @@ header {
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 520px) {
   header {
     display: none;
+    background-color: transparent;
+  }
+  header.header_active {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-animation-name: show;
+            animation-name: show;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+  }
+  @-webkit-keyframes show {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes show {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+@media only screen and (min-width: 521px) and (max-width: 960px) {
+  header {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  header.header_active {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 }
 
@@ -303,7 +342,7 @@ header nav ul li a:hover {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background-color: rgba(246, 245, 239, 0.7);
+  background-color: rgba(246, 245, 239, 0.8);
   -webkit-transform: scale(0);
           transform: scale(0);
   -webkit-transition: all 0.5s;
@@ -343,7 +382,7 @@ header nav ul li a:hover {
 }
 
 .wrapper .sc_mg.sc_mg1 {
-  margin-top: 2rem;
+  margin-top: 5rem;
   font-size: 4rem;
   color: #01b2fe;
 }
@@ -739,5 +778,18 @@ header nav ul li a:hover {
   cursor: pointer;
   color: #6e6e6e;
   background-color: #01b2fe;
+}
+
+.wrapper footer {
+  text-align: center;
+  padding: 1rem 0 3rem 0;
+}
+
+.wrapper footer #copyright {
+  font-size: 1.2rem;
+}
+
+.wrapper footer #copyright.pad_top {
+  padding-top: 4rem;
 }
 /*# sourceMappingURL=style.css.map */

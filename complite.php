@@ -5,12 +5,13 @@ session_start();
 if (!isset($_SESSION['form'])) {
     header('Location: index.php');
     exit();
-} 
+}
 
 //セッションを消す
 session_destroy();
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,8 +75,13 @@ session_destroy();
     <div class="wrapper">
         <h1 class="sc_mg sc_mg1">Thank you!</h1>
         <h2 class="sc_mg sc_mg2">Your message was successfully sent.</h2>
+
+        <footer>
+            <p id="copyright" class="pad_top">&copy; 2021 Kazuki.</p>
+        </footer>
     </div>
 
+    <script type="module" src="js/header.js"></script>
 </body>
 
 </html>

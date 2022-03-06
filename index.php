@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         //エラーがないので送信
         $_SESSION['form'] = $post;
-        // $to = 'kazukiwammu@gmail.com';
+        $to = 'myEmail';
         $from = $post['email'];
         $subject = 'お問い合わせが届きました';
         $body = <<<EOT
@@ -111,11 +111,11 @@ session_destroy();
 
         <nav>
             <ul>
-                <li><a href="#home_wrapper">Home</a></li>
-                <li><a href="#about_wrapper">About</a></li>
-                <li><a href="#skills_wrapper">Skills</a></li>
-                <li><a href="#portfolio_wrapper">Portfolio</a></li>
-                <li><a href="#contact_wrapper">Contact</a></li>
+                <li><a id="go_home" href="#home_wrapper">Home</a></li>
+                <li><a id="go_about" href="#about_wrapper">About</a></li>
+                <li><a id="go_skills" href="#skills_wrapper">Skills</a></li>
+                <li><a id="go_portfolio" href="#portfolio_wrapper">Portfolio</a></li>
+                <li><a id="go_contact" href="#contact_wrapper">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -177,7 +177,7 @@ session_destroy();
                     <div class="swiper-slide">
                         <img src="images/rock_climbing/rock_climbing6.jpeg" />
                     </div>
-                    
+
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -195,7 +195,7 @@ session_destroy();
                     </div>
                     <div class="swiper-slide height">
                         <img src="images/winter/winter_mountain4.jpg" />
-                    </div>                                    
+                    </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -225,7 +225,7 @@ session_destroy();
             <h1 class="heading">Portfolio</h1>
             <div id="portfolios">
                 <div class="portfolio">
-                    <a href="#">
+                    <a href="https://lucky-iki-2813.flier.jp/Portfolio_default/">
                         <img src="images/portfolio/portfolio1.png" alt="My portfolio image">
                         <span>First<br> Portfolio Website</span>
                     </a>
@@ -240,7 +240,7 @@ session_destroy();
                 </div>
 
                 <div class="portfolio">
-                    <a href="#">
+                    <a href="http://kazukitheme.wp.xdomain.jp/">
                         <img src="images/portfolio/portfolio3.png" alt="My portfolio image">
                         <span>"WordPress"<br>My Theme</span>
                     </a>
@@ -283,10 +283,24 @@ session_destroy();
             </form>
         </div>
         <!-- contact section ends -->
+
+        <!-- footer starts -->
+
+        <footer>
+            <p id="copyright">&copy; 2021 Kazuki.</p>
+        </footer>
     </div>
 
 
+    <!-- Read jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <!-- Read Swiper -->
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+    <!-- Read original js-file -->
+    <script type="module" src="js/header.js"></script>
+    <script type="module" src="js/scroll.js"></script>
     <script src="js/script.js"></script>
 </body>
 

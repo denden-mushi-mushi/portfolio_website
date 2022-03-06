@@ -1,13 +1,3 @@
-const getToggle = document.getElementById('toggle'); // get id: toggle
-const getCircle = document.getElementById('circle'); // get id: circle
-
-
-// on/off system in navigation 
-getToggle.onclick = function () {
-    getToggle.classList.toggle('active');
-    getCircle.classList.toggle('circle_active');
-}
-
 // Swiper
 var swiper = new Swiper(".mySwiper", {
     effect: "coverflow",
@@ -25,6 +15,8 @@ var swiper = new Swiper(".mySwiper", {
         el: ".swiper-pagination",
     },
 });
+
+
 
 // hover system in skill content
 
@@ -44,6 +36,9 @@ if (mediaQuery.matches) {
     }
 
 }
+
+
+
 
 // check event when form is submitted
 
